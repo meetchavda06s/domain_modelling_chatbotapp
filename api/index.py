@@ -35,13 +35,13 @@ class ChatRequest(BaseModel):
 def healthchecker():
     return {"status": "success", "message": "FastAPI is running with Azure OpenAI"}
 
-@app.post("/generate-uml")
-def generate_uml(request: ScenarioRequest):
-    try:
-        plantuml_output = gpt_v2_interface(scenario=request.scenario, client=client)
-        return {"plantuml": plantuml_output}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error generating UML: {str(e)}")
+# @app.post("/generate-uml")
+# def generate_uml(request: ScenarioRequest):
+#     try:
+#         plantuml_output = gpt_v2_interface(scenario=request.scenario, client=client)
+#         return {"plantuml": plantuml_output}
+#     except Exception as e:
+#         raise HTTPException(status_code=500, detail=f"Error generating UML: {str(e)}")
 
 @app.post("/chat")
 def chat_completion(request: ChatRequest):
